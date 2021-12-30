@@ -138,7 +138,7 @@ const AddNewContact: FC<NewContactProps> = ({ navigation }) => {
                 .then((res) => {
                   alert("Data Submitted Successfully.");
                   // useState(initData);
-                  navigation.navigate("Contacts");
+                  navigation.navigate('Contacts');
                 })
                 .catch((err) => console.log(err));
             }}

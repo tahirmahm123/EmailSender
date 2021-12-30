@@ -22,5 +22,13 @@ export type RootStackParamList = {
   AddNewContact: undefined;
   ComposeEmail: undefined;
 };
+export type SendEmailToGroup = {
+  template: number;
+  group: number;
+};
+export type SendEmailToEmails = {
+  template: number;
+  emails: string[];
+};
 export const ContactS = 'contacts';
 export const GroupS = 'groups';

@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  Text,
-  View,
-  FlatList,
-  Divider,
-  Checkbox,
-} from 'native-base';
+import {Text, View, FlatList, Divider, Radio} from 'native-base';
 import {Template} from '../types';
 
 interface FlatListTemplate {
@@ -13,46 +7,48 @@ interface FlatListTemplate {
 }
 interface Props {
   templates: Template[];
-  setTemplate: () => void;
+  selected: number;
+  setTemplate: (value: string) => void;
 }
 class TemplatesFlatList extends React.Component<Props> {
   render() {
     return (
-      <View style={{flex: 1, height: 100, padding: 10}}>
-       <Text>asdkjsldfkjgsdfg;ljksdfg</Text>
-       <Text>{JSON.stringify(this.props)}</Text>
-        {/*<FlatList
-          data={this.props.templates}
-          renderItem={({item: {id, subject}}: FlatListTemplate) => {
-            return (
-              <View
-                style={{
-                  padding: 5,
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                }}>
-                <View>
-                  <Text fontSize="lg">{subject}</Text>
-                </View>
+      <View style={{height: 200, padding: 10}}>
+        <Text fontSize="md">Select Template To Send:</Text>
+        <Radio.Group
+          name={'Template'}
+          value={this.props.selected.toString()}
+          onChange={nextValue => this.props.setTemplate(nextValue)}>
+          <FlatList
+            data={this.props.templates}
+            renderItem={({item: {id, subject}}: FlatListTemplate) => {
+              return (
                 <View
                   style={{
-                    paddingTop: 10,
-                    paddingLeft: 10,
-                    justifyContent: 'flex-start',
-                    alignItems: 'flex-end',
+                    padding: 5,
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
                   }}>
-                  <Checkbox
-                    value={id.toString()}
-                    accessibilityLabel={subject}
-                  />
+                  <View>
+                    <Text fontSize="sm">{subject}</Text>
+                  </View>
+                  <View
+                    style={{
+                      paddingTop: 10,
+                      paddingLeft: 10,
+                      justifyContent: 'flex-start',
+                      alignItems: 'flex-end',
+                    }}>
+                    <Radio value={id.toString()} accessibilityLabel={subject} />
+                  </View>
                 </View>
-              </View>
-            );
-          }}
-          keyExtractor={item => item.id}
-          ItemSeparatorComponent={() => <Divider />}
-        />*/}
+              );
+            }}
+            keyExtractor={item => item.id}
+            ItemSeparatorComponent={() => <Divider />}
+          />
+        </Radio.Group>
       </View>
     );
   }

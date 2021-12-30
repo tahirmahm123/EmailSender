@@ -41,7 +41,7 @@ class ContactsScreen extends React.Component<Props, State> {
           </Button>
         </View>
 
-        <View style={{flex: 1, padding: 40, backgroundColor: '#F8F8F8'}}>
+        <View style={{flex: 1, padding: 10, backgroundColor: '#F8F8F8'}}>
           <FlatList
             data={this.state.data}
             renderItem={({
@@ -59,23 +59,6 @@ class ContactsScreen extends React.Component<Props, State> {
                     <Text fontSize="lg">{email}</Text>
                     <Text fontSize="md">{phone}</Text>
                     <Text fontSize="md">Group: {group.title}</Text>
-                  </View>
-                  <View
-                    style={{
-                      paddingTop: 10,
-                      paddingLeft: 10,
-                      justifyContent: 'flex-start',
-                      alignItems: 'flex-end',
-                    }}>
-                    <Button
-                      size="sm"
-                      colorScheme="primary"
-                      style={{width: 70}}
-                      onPress={() => {
-                        this.props.navigation.navigate('AddNewContact');
-                      }}>
-                      Send Mail
-                    </Button>
                   </View>
                 </View>
               );
